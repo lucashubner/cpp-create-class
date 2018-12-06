@@ -36,14 +36,6 @@ done
 
 for K in "${!TYPES[@]}"; do echo $K; done
 
-
-#########################################################################
-function getUserName {
-	return $(git config user.name)
-}
-function getUserEmail {
-	return $(git config user.email)
-}
 #########################################################################
 #Finaliza arquivo .h
 function writeHeaderEnd {
@@ -76,8 +68,8 @@ cat > $CLASS_NAME.h << @EOF
  * @ingroup PackageName
  * (Note: this needs exactly one @defgroup somewhere)
  *
- * @author  $(getUserName)
- * Contact: $(getUserEmail)
+ * @author  $(git config user.name)
+ * Contact: $(git config user.email)
  *
  */
 #ifndef SRC_$(echo $CLASS_NAME | awk '{print toupper($0)}')_H_
