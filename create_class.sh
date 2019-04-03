@@ -1,7 +1,7 @@
-#! /bin/bash
+# /bin/bash
 #########################################################################
 function showHelp {
-	echo "create_class.sh (ClassName) {(type):(attribute_name) ...}"
+	echo "create_class.sh ClassName type:attribute_name ..."
 	exit
 }
 #########################################################################
@@ -93,7 +93,7 @@ function writeFunctionDef {
 	TYPE=$(echo $1 | awk -F ":" '{print $1}')
 	VAR_NAME=$(echo $1 |awk -F ":" '{print $2}')
 cat >> $CLASS_NAME.h << @EOF 
-	$TYPE get${VAR_NAME^}();
+	const $TYPE get${VAR_NAME^}();
 	void set${VAR_NAME^}($TYPE $VAR_NAME);
 
 @EOF
